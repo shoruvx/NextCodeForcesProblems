@@ -16,25 +16,29 @@ typedef vector<int> vi;
 
 void solve()
 {
-    string s; cin >> s;
-    int n = s.size();
+    int n; cin >> n;
+    in(v,n);
 
-    int yCount = 0;
+    vi diff;
+    int sum = 0;
 
-    fr(i,0,n)
+    fr(i,1,n)
     {
-    	if (s[i]=='Y') yCount++;
+    	int temp = abs(v[i-1] - v[i]);
+    	diff.push_back(temp);
+    	sum += temp;
+
     }
 
-    if (yCount > 1)
+    int maxVal = max(diff[0],diff[diff.size()-1]);
+
+    fr(i,1,diff.size())
     {
-    	no;
-    }
-    else
-    {
-    	yes;
+    	int x = (diff[i-1] + diff[i]) - abs(v[i-1] - v[i+1]);
+    	maxVal = max(maxVal,x);
     }
 
+    cout << sum - maxVal << endl;
 }
 
 int32_t main() 

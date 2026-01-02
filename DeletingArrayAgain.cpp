@@ -16,25 +16,49 @@ typedef vector<int> vi;
 
 void solve()
 {
-    string s; cin >> s;
-    int n = s.size();
+    int n; cin >> n;
+    in(v,n);
+    in(cost,n);
 
-    int yCount = 0;
+    vi visited(n,0);
+    int done = 0;
+
+    int score = 0;
+
+    vi dump;
 
     fr(i,0,n)
     {
-    	if (s[i]=='Y') yCount++;
+    	dump.push_back(cost[i]);
     }
 
-    if (yCount > 1)
+    sort(all(dump));
+
+    int idx = 0;
+
+    while(done < n)
     {
-    	no;
-    }
-    else
-    {
-    	yes;
+
+    	fr(i,0,n)
+    	{
+
+	    	if (dump[idx]==cost[i])
+	    	{
+	    		fr(j,i,n)
+	    		{
+	    			if(!visited[j])
+	    			{
+	    				score += cost[i] * v[j];
+	    				done++;
+	    				visited[j] = 1;
+	    			}
+	    		}
+	    		idx++;
+	    	}
+    	}
     }
 
+    cout << score << endl;
 }
 
 int32_t main() 

@@ -16,33 +16,18 @@ typedef vector<int> vi;
 
 void solve()
 {
-    string s; cin >> s;
-    int n = s.size();
+    int n, t; cin >> n >> t;
+    in(v,n);
 
-    int yCount = 0;
-
-    fr(i,0,n)
-    {
-    	if (s[i]=='Y') yCount++;
-    }
-
-    if (yCount > 1)
-    {
-    	no;
-    }
-    else
-    {
-    	yes;
-    }
-
+    cout << t - *max_element(all(v)) << endl;
 }
 
 int32_t main() 
 {
     fastio;
 
-    int t; cin >> t;
-    while(t--) solve();
+
+	solve();
 
     return 0;
 }

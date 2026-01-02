@@ -16,25 +16,30 @@ typedef vector<int> vi;
 
 void solve()
 {
+    int n; cin >> n;
     string s; cin >> s;
-    int n = s.size();
 
-    int yCount = 0;
+    int ch = 0, ach = 0;
+
+    int count = 0;
 
     fr(i,0,n)
     {
-    	if (s[i]=='Y') yCount++;
+    	if (ch > ach)
+    	{
+    		count++;
+    	}
+
+    	if (s[i]=='1') ch++;
+    	else ach++;
     }
 
-    if (yCount > 1)
-    {
-    	no;
-    }
-    else
-    {
-    	yes;
-    }
+    if (ch > ach)
+	{
+		count++;
+	}
 
+    cout << count << endl;
 }
 
 int32_t main() 

@@ -16,25 +16,32 @@ typedef vector<int> vi;
 
 void solve()
 {
+    int n; cin >> n;
     string s; cin >> s;
-    int n = s.size();
 
-    int yCount = 0;
+    int five = 0, six = 0;
 
-    fr(i,0,n)
+    string f= "2025";
+    string si= "2026";
+
+    if (s.find(f) != string::npos)
     {
-    	if (s[i]=='Y') yCount++;
+    	five++;
     }
 
-    if (yCount > 1)
+    if (s.find(si) != string::npos)
     {
-    	no;
+    	six++;
+    }
+
+    if (!five || six)
+    {
+    	cout << 0 << endl;
     }
     else
     {
-    	yes;
+    	cout << 1 << endl;
     }
-
 }
 
 int32_t main() 

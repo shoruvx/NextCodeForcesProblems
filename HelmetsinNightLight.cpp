@@ -16,25 +16,44 @@ typedef vector<int> vi;
 
 void solve()
 {
-    string s; cin >> s;
-    int n = s.size();
+    int n, p; cin >> n >> p;
 
-    int yCount = 0;
+    in(v1,n);
+    in(v2,n);
+
+
+    vector<pair<int, int>> vp;
 
     fr(i,0,n)
     {
-    	if (s[i]=='Y') yCount++;
+
+    	vp.push_back(make_pair(v2[i],v1[i]));
     }
 
-    if (yCount > 1)
+    sort(all(vp));
+
+    int cost = 0;
+    int i = 0;
+    cost += p;
+    n -= 1;
+
+    while(n > 0 && vp[i].first <= p)
     {
-    	no;
-    }
-    else
-    {
-    	yes;
+    	while(vp[i].second-- && n > 0)
+    	{
+    		cost += vp[i].first;
+    		n--;	
+    	}
+
+    	i++;
     }
 
+    fr(i,0,n)
+    {
+    	cost += p;
+    }
+
+    cout << cost << endl;
 }
 
 int32_t main() 

@@ -16,33 +16,25 @@ typedef vector<int> vi;
 
 void solve()
 {
-    string s; cin >> s;
-    int n = s.size();
+    int n; cin >> n;
 
-    int yCount = 0;
+    int score = 0;
 
-    fr(i,0,n)
+    while (n--)
     {
-    	if (s[i]=='Y') yCount++;
+    	int a,b,c; cin >> a >> b >> c;
+
+    	if (a+b+c >= 2) score++;
     }
 
-    if (yCount > 1)
-    {
-    	no;
-    }
-    else
-    {
-    	yes;
-    }
-
+    cout << score << endl;
 }
 
 int32_t main() 
 {
     fastio;
 
-    int t; cin >> t;
-    while(t--) solve();
+	solve();
 
     return 0;
 }

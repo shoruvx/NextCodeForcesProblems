@@ -16,33 +16,18 @@ typedef vector<int> vi;
 
 void solve()
 {
-    string s; cin >> s;
-    int n = s.size();
-
-    int yCount = 0;
-
-    fr(i,0,n)
+    fr(i,0,25)
     {
-    	if (s[i]=='Y') yCount++;
+    	cout << "Meena is participating in YCPC 2025" << endl;
     }
-
-    if (yCount > 1)
-    {
-    	no;
-    }
-    else
-    {
-    	yes;
-    }
-
 }
 
 int32_t main() 
 {
     fastio;
 
-    int t; cin >> t;
-    while(t--) solve();
+
+	solve();
 
     return 0;
 }

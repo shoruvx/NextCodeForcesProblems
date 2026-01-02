@@ -16,24 +16,26 @@ typedef vector<int> vi;
 
 void solve()
 {
-    string s; cin >> s;
-    int n = s.size();
+    int n; cin >> n;
+    in(v,n);
+    vi pref(n + 1), suff(n);
 
-    int yCount = 0;
-
-    fr(i,0,n)
+    fr(i,1,n)
     {
-    	if (s[i]=='Y') yCount++;
+    	pref[i + 1] = pref[i] + abs(v[i]);
     }
 
-    if (yCount > 1)
-    {
-    	no;
-    }
-    else
-    {
-    	yes;
-    }
+    for(int i = n - 1; i >= 1; i--) 
+	{
+		suff[i - 1] = suff[i] - v[i];
+	}
+ 
+    int ans = suff[0];
+    fr(i,1,n) 
+	{
+		ans = max(ans, v[0] + pref[i] + suff[i]);
+	}
+    cout << ans << endl;
 
 }
 

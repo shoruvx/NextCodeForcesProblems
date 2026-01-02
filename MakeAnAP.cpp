@@ -16,25 +16,32 @@ typedef vector<int> vi;
 
 void solve()
 {
-    string s; cin >> s;
-    int n = s.size();
+    int n; cin >> n;
+    in(v,n);
 
-    int yCount = 0;
-
-    fr(i,0,n)
+    if (n <= 2)
     {
-    	if (s[i]=='Y') yCount++;
+    	cout << 0 << endl;
+    	return;
     }
 
-    if (yCount > 1)
+    
+
+    int target = 0;
+
+    fr(i,1,n)
     {
-    	no;
-    }
-    else
-    {
-    	yes;
+    	target = gcd(target, v[i] - v[i-1]);
     }
 
+    int count = 0;
+
+    fr(i,1,n)
+    {
+    	count += ((v[i] - v[i-1])/ target) - 1;
+    }
+    
+    cout << count << endl;
 }
 
 int32_t main() 

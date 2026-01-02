@@ -16,25 +16,18 @@ typedef vector<int> vi;
 
 void solve()
 {
-    string s; cin >> s;
-    int n = s.size();
+    int n; cin >> n;
+    in(v,n);
+    sort(all(v));
 
-    int yCount = 0;
+    int minVal = v[1] - v[0];
 
-    fr(i,0,n)
+    fr(i,1,n)
     {
-    	if (s[i]=='Y') yCount++;
+    	minVal = min(minVal, v[i] - v[0]);
     }
 
-    if (yCount > 1)
-    {
-    	no;
-    }
-    else
-    {
-    	yes;
-    }
-
+    cout << max(v[0],minVal) << endl;
 }
 
 int32_t main() 

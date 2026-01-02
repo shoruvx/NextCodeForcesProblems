@@ -16,25 +16,22 @@ typedef vector<int> vi;
 
 void solve()
 {
-    string s; cin >> s;
-    int n = s.size();
+    int n; cin >> n;
+    in(v,n);
 
-    int yCount = 0;
+    int sum = 0;
 
     fr(i,0,n)
     {
-    	if (s[i]=='Y') yCount++;
+    	sum += v[i];
     }
 
-    if (yCount > 1)
-    {
-    	no;
-    }
+    if (sum >= 0) cout << 0 << endl;
     else
     {
-    	yes;
+    	int temp = abs(sum / n) + (sum % n != 0);
+    	cout << temp << endl;
     }
-
 }
 
 int32_t main() 

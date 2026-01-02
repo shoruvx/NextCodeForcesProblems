@@ -16,25 +16,17 @@ typedef vector<int> vi;
 
 void solve()
 {
-    string s; cin >> s;
-    int n = s.size();
-
-    int yCount = 0;
+    int n; cin >> n;
+    vi oddArr;
+    vi evenArr;
 
     fr(i,0,n)
     {
-    	if (s[i]=='Y') yCount++;
-    }
+    	int x; cin >> x;
 
-    if (yCount > 1)
-    {
-    	no;
+    	if (x%2) oddArr.push_back(x);
+    	else evenArr.push_back(x);
     }
-    else
-    {
-    	yes;
-    }
-
 }
 
 int32_t main() 

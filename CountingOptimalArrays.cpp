@@ -14,27 +14,41 @@ using namespace std;
 
 typedef vector<int> vi;
 
+int pow(int x, int y)
+{
+	int ans = 1;
+
+	fr(i,0,y)
+	{
+		ans *= x % 998244353;
+	}
+
+	return ans;
+}
+
 void solve()
 {
-    string s; cin >> s;
-    int n = s.size();
+    int n, m; cin >> n >> m;
 
-    int yCount = 0;
-
-    fr(i,0,n)
+    if (n==1)
     {
-    	if (s[i]=='Y') yCount++;
+    	cout << m + 1 << endl;
+    	return;
     }
 
-    if (yCount > 1)
+    int bit = 0;
+
+    int temp = m;
+    while (temp >= 1)
     {
-    	no;
-    }
-    else
-    {
-    	yes;
+    	bit++;
+    	temp /= 2;
     }
 
+    int exp = pow(2,bit);
+    --exp;
+
+    cout << m - (exp - (m+1)) << endl;
 }
 
 int32_t main() 

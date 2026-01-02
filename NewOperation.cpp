@@ -16,24 +16,37 @@ typedef vector<int> vi;
 
 void solve()
 {
-    string s; cin >> s;
-    int n = s.size();
+    int n; cin >> n;
+    in(v,n);
 
-    int yCount = 0;
+    int minVal, maxVal;
 
-    fr(i,0,n)
+    if (n <= 2)
     {
-    	if (s[i]=='Y') yCount++;
+    	minVal = v[0] + 2 * v[1];
+    	maxVal = v[0] + 2 * v[1];
+
+    	cout << minVal << " " << maxVal << endl;
+    	return;
     }
 
-    if (yCount > 1)
+    minVal = v[0];
+
+    fr(i,1,n)
     {
-    	no;
+    	minVal += 2 * v[i];
     }
-    else
+
+    maxVal = v[n-1];
+
+    for(int i = n-2; i >= 1; i--)
     {
-    	yes;
+    	maxVal = (2 * maxVal) + v[i];
     }
+
+    maxVal = maxVal = (2 * maxVal) + v[0];
+
+    cout << minVal << " " << maxVal << endl;
 
 }
 

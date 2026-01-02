@@ -16,25 +16,32 @@ typedef vector<int> vi;
 
 void solve()
 {
-    string s; cin >> s;
-    int n = s.size();
+    int n; cin >> n;
 
-    int yCount = 0;
+    int ans = 0;
 
-    fr(i,0,n)
+    vector<int> vp;
+    vector<int> vRev;
+
+    while(n--)
     {
-    	if (s[i]=='Y') yCount++;
+    	int m; cin >> m;
+
+    	in(v,m);
+    	sort(all(v));
+
+    	ans += v[1];
+    	vp.push_back(v[1]);
+    	vRev.push_back(v[0]);
     }
 
-    if (yCount > 1)
-    {
-    	no;
-    }
-    else
-    {
-    	yes;
-    }
+    sort(all(vp));
+    sort(all(vRev));
 
+    ans -= vp[0];
+    ans += vRev[0];
+
+    cout << ans << endl;
 }
 
 int32_t main() 

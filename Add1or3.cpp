@@ -16,24 +16,29 @@ typedef vector<int> vi;
 
 void solve()
 {
-    string s; cin >> s;
-    int n = s.size();
+    int n, m; cin >> n >> m;
 
-    int yCount = 0;
+    vi ans;
 
-    fr(i,0,n)
-    {
-    	if (s[i]=='Y') yCount++;
-    }
+    int temp = 1 * n;
 
-    if (yCount > 1)
-    {
-    	no;
-    }
-    else
-    {
-    	yes;
-    }
+    if ( m < n || m > 3 * n)
+	{
+		no;
+		return;
+	}
+	else if (n % 2 == 1 && m % 2 == 0)
+	{
+		no;
+		return;
+	}
+	else if (n % 2 == 0 && m % 2 == 1)
+	{
+		no;
+		return;
+	}
+
+    yes;
 
 }
 

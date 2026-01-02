@@ -16,33 +16,39 @@ typedef vector<int> vi;
 
 void solve()
 {
-    string s; cin >> s;
-    int n = s.size();
+    int n, k, q;
+    cin >> n >> k >> q;
 
-    int yCount = 0;
+    const int MAX = 200000;
+    vi diff(MAX + 2, 0);
 
-    fr(i,0,n)
-    {
-    	if (s[i]=='Y') yCount++;
+    for (int i = 0; i < n; i++) {
+        int l, r;
+        cin >> l >> r;
+        diff[l]++;
+        diff[r + 1]--;
     }
 
-    if (yCount > 1)
-    {
-    	no;
-    }
-    else
-    {
-    	yes;
+    vi pref(MAX + 1, 0);
+    int cur = 0;
+
+    for (int i = 1; i <= MAX; i++) {
+        cur += diff[i];
+        pref[i] = pref[i - 1] + (cur >= k);
     }
 
+    while (q--) {
+        int a, b;
+        cin >> a >> b;
+        cout << pref[b] - pref[a - 1] << '\n';
+    }
 }
 
 int32_t main() 
 {
     fastio;
 
-    int t; cin >> t;
-    while(t--) solve();
+	solve();
 
     return 0;
 }

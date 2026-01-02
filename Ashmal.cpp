@@ -16,25 +16,29 @@ typedef vector<int> vi;
 
 void solve()
 {
-    string s; cin >> s;
-    int n = s.size();
+    int n; cin >> n;
 
-    int yCount = 0;
+    vector<string> vs;
 
     fr(i,0,n)
     {
-    	if (s[i]=='Y') yCount++;
+    	string s; cin >> s;
+    	vs.push_back(s);
     }
 
-    if (yCount > 1)
+
+    string ans = "";
+    ans += vs[0];
+
+    fr(i,1,n)
     {
-    	no;
-    }
-    else
-    {
-    	yes;
+    	string temp1 = ans + vs[i];   
+    	string temp2 = vs[i] + ans;
+
+    	ans = min(temp1,temp2);
     }
 
+    cout << ans << endl;
 }
 
 int32_t main() 

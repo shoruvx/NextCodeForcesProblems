@@ -16,25 +16,22 @@ typedef vector<int> vi;
 
 void solve()
 {
-    string s; cin >> s;
-    int n = s.size();
+    int a, b; cin >> a >> b;
 
-    int yCount = 0;
+    double tempA = (double) a / 100;
+    double tempB = (double) b / 225;
 
-    fr(i,0,n)
+    if (tempB > tempA)
     {
-    	if (s[i]=='Y') yCount++;
+    	cout << "Small" << endl;
     }
-
-    if (yCount > 1)
+    else if (tempA > tempB)
     {
-    	no;
+    	cout << "Large" << endl;
     }
-    else
-    {
-    	yes;
-    }
+    else cout << "Equal" << endl;
 
+    // cout << tempA << " " << tempB << endl;
 }
 
 int32_t main() 

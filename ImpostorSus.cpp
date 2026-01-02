@@ -16,25 +16,34 @@ typedef vector<int> vi;
 
 void solve()
 {
-    string s; cin >> s;
-    int n = s.size();
 
-    int yCount = 0;
+	string s; cin >> s;
 
-    fr(i,0,n)
-    {
-    	if (s[i]=='Y') yCount++;
-    }
+	int n = s.size();
 
-    if (yCount > 1)
-    {
-    	no;
-    }
-    else
-    {
-    	yes;
-    }
+	int curr = 0, count = 0;
 
+	fr(i,1,n-1)
+	{
+		if (s[i]=='u' && s[i+1] != 's')
+		{
+			count++;
+			s[i+1] = 's';
+		}
+	}
+
+	if (s[n-1]=='u')
+	{
+		count++;
+	}
+
+	if (s[0]=='u')
+	{
+		count++;
+	}
+
+	cout << count << endl;
+    
 }
 
 int32_t main() 

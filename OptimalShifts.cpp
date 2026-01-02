@@ -16,25 +16,28 @@ typedef vector<int> vi;
 
 void solve()
 {
+    int n; cin >> n;
     string s; cin >> s;
-    int n = s.size();
 
-    int yCount = 0;
+    int countZ = 0;
+    int found = 0;
+    int temp = 0;
 
-    fr(i,0,n)
+    fr(i,0,2 * n)
     {
-    	if (s[i]=='Y') yCount++;
+    	if(s[i % n] == '0')
+    	{
+    		temp++;
+    	}
+    	else
+    	{
+    		found = -1;
+    		countZ = max(countZ, temp);
+    		temp = 0;
+    	}
     }
 
-    if (yCount > 1)
-    {
-    	no;
-    }
-    else
-    {
-    	yes;
-    }
-
+    cout << countZ << endl;
 }
 
 int32_t main() 

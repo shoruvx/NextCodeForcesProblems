@@ -16,38 +16,29 @@ typedef vector<int> vi;
 
 void solve()
 {
-    int n; cin >> n;
-    
+    int n,m; cin >> n >> m;
 
-    vector<pair<char,int>> vp;
+    in(first,n);
+    in(second,m);
 
-    fr(i,0,n)
+    sort(all(first));
+    sort(all(second));
+
+    int count = 0;
+
+    for(auto x : second)
     {
-    	int x; cin >> x;
-    	if (i % 2)
+    	fr(i,0,n)
     	{
-    		vp.push_back(make_pair(x,'r'));
-    	}
-    	else
-    	{
-    		vp.push_back(make_pair(x,'b'));
+    		if(first[i] > x)
+    		{
+    			count += n-i;
+    			break;
+    		}
     	}
     }
 
-    sort(all(vp));
-
-    for (int i = 1; i < n; i++)
-    {
-    	if(vp[i].second == vp[i-1].second)
-    	{
-    	 	no;
-    	 	return;
-    	}
-    }
-
-    yes;
-
-
+    cout << count << endl;
 }
 
 int32_t main() 

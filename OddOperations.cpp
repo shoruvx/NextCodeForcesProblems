@@ -16,36 +16,49 @@ typedef vector<int> vi;
 
 void solve()
 {
-    int n; cin >> n;
-    
+    string s; cin >> s;
 
-    vector<pair<char,int>> vp;
+    int n = stoll(s);
 
-    fr(i,0,n)
+    int lastDig = s[s.size()-1] - '0';
+
+
+
+   	if (lastDig % 2 == 1)
     {
-    	int x; cin >> x;
-    	if (i % 2)
+    	cout << 0 << endl;
+    }
+    else if (n < 10)
+    {
+    	cout << -1 << endl;
+    }
+    else
+    {
+
+    	int odd = 0, even = 0;
+
+    	fr(i,0,s.size())
     	{
-    		vp.push_back(make_pair(x,'r'));
+    		if ((s[i]-'0') % 2 == 1)
+    		{
+    			odd++;
+    		}
+    		else
+    		{
+    			even++;
+    		}
+    	}
+
+    	if(odd)
+    	{
+    		cout << 1 << endl;
     	}
     	else
     	{
-    		vp.push_back(make_pair(x,'b'));
+    		cout << even << endl;
     	}
+
     }
-
-    sort(all(vp));
-
-    for (int i = 1; i < n; i++)
-    {
-    	if(vp[i].second == vp[i-1].second)
-    	{
-    	 	no;
-    	 	return;
-    	}
-    }
-
-    yes;
 
 
 }

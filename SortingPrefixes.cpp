@@ -17,40 +17,36 @@ typedef vector<int> vi;
 void solve()
 {
     int n; cin >> n;
-    
+    in(v,n);
 
-    vector<pair<char,int>> vp;
+    vi temp;
 
     fr(i,0,n)
     {
-    	int x; cin >> x;
-    	if (i % 2)
-    	{
-    		vp.push_back(make_pair(x,'r'));
-    	}
-    	else
-    	{
-    		vp.push_back(make_pair(x,'b'));
-    	}
+    	temp.push_back(i+1);
     }
 
-    sort(all(vp));
+    int idx = -1;
 
-    for (int i = 1; i < n; i++)
+    fr(i,0,n)
     {
-    	if(vp[i].second == vp[i-1].second)
+    	if (v[i] != temp[i])
     	{
-    	 	no;
-    	 	return;
+    		idx = i;
     	}
     }
 
-    yes;
-
-
+    if (idx == -1)
+    {
+    	cout << 0 << endl;
+    }
+    else
+    {
+    	cout << v[idx] << endl;
+    }
 }
 
-int32_t main() 
+int32_t main()
 {
     fastio;
 

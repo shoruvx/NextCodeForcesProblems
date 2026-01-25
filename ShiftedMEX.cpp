@@ -17,37 +17,32 @@ typedef vector<int> vi;
 void solve()
 {
     int n; cin >> n;
-    
+    in(v,n);
 
-    vector<pair<char,int>> vp;
+    sort(all(v));
 
-    fr(i,0,n)
+    int maxVal = 0;
+
+    for (auto x: v)
     {
-    	int x; cin >> x;
-    	if (i % 2)
+    	vi temp;
+
+    	fr(i,0,n)
     	{
-    		vp.push_back(make_pair(x,'r'));
+    		temp.push_back(v[i]-x);
     	}
-    	else
+
+    	fr(i,0,temp[n-1]+2)
     	{
-    		vp.push_back(make_pair(x,'b'));
+    		if (find(all(temp), i) == temp.end())
+    		{
+    			maxVal = max(maxVal,i);
+    			break;
+    		}
     	}
     }
 
-    sort(all(vp));
-
-    for (int i = 1; i < n; i++)
-    {
-    	if(vp[i].second == vp[i-1].second)
-    	{
-    	 	no;
-    	 	return;
-    	}
-    }
-
-    yes;
-
-
+    cout << maxVal << endl;
 }
 
 int32_t main() 

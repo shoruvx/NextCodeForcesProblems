@@ -10,43 +10,37 @@ using namespace std;
 #define in(v,n)  vi v(n); fr(i,0,n) cin>>v[i];
 #define yes cout<<"YES"<<'\n'
 #define no cout<<"NO"<<'\n'
+#define pb push_back
+#define sz(x) (int)(x).size()
 #define fastio ios_base::sync_with_stdio(false); cin.tie(NULL);
 
 typedef vector<int> vi;
+typedef vector<pair<int,int>> vip;
 
 void solve()
 {
-    int n; cin >> n;
-    
+    string s; cin >> s;
+    int size = sz(s);
 
-    vector<pair<char,int>> vp;
+    stack<char> st;
 
-    fr(i,0,n)
+    for (char c : s)
     {
-    	int x; cin >> x;
-    	if (i % 2)
+    	if(!st.empty() && st.top() == c)
     	{
-    		vp.push_back(make_pair(x,'r'));
+    		st.pop();
     	}
     	else
     	{
-    		vp.push_back(make_pair(x,'b'));
+    		st.push(c);
     	}
     }
 
-    sort(all(vp));
-
-    for (int i = 1; i < n; i++)
+    if (st.empty())
     {
-    	if(vp[i].second == vp[i-1].second)
-    	{
-    	 	no;
-    	 	return;
-    	}
+    	yes;
     }
-
-    yes;
-
+    else no;
 
 }
 

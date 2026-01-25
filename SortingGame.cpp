@@ -8,8 +8,8 @@ using namespace std;
 #define rall(x) (x).rbegin(), (x).rend()
 #define fr(i,a,b) for(int i = a; i < b; i++)
 #define in(v,n)  vi v(n); fr(i,0,n) cin>>v[i];
-#define yes cout<<"YES"<<'\n'
-#define no cout<<"NO"<<'\n'
+#define yes cout<<"Bob"<<'\n'
+#define no cout<<"Alice"<<'\n'
 #define fastio ios_base::sync_with_stdio(false); cin.tie(NULL);
 
 typedef vector<int> vi;
@@ -17,37 +17,36 @@ typedef vector<int> vi;
 void solve()
 {
     int n; cin >> n;
-    
 
-    vector<pair<char,int>> vp;
+    string s; cin >> s;
 
+    string s1 = s;
+    sort(all(s1));
+
+    if (s == s1)
+    {
+    	yes;
+    	return;
+    }
+
+
+    vi ans;
     fr(i,0,n)
     {
-    	int x; cin >> x;
-    	if (i % 2)
+    	if(s[i] != s1[i])
     	{
-    		vp.push_back(make_pair(x,'r'));
-    	}
-    	else
-    	{
-    		vp.push_back(make_pair(x,'b'));
+    		ans.push_back(i+1);
     	}
     }
 
-    sort(all(vp));
+    no;
+    cout << ans.size() << endl;
 
-    for (int i = 1; i < n; i++)
+    for (auto x : ans)
     {
-    	if(vp[i].second == vp[i-1].second)
-    	{
-    	 	no;
-    	 	return;
-    	}
+    	cout << x << " ";
     }
-
-    yes;
-
-
+    cout << endl;
 }
 
 int32_t main() 

@@ -10,43 +10,64 @@ using namespace std;
 #define in(v,n)  vi v(n); fr(i,0,n) cin>>v[i];
 #define yes cout<<"YES"<<'\n'
 #define no cout<<"NO"<<'\n'
+#define pb push_back
+#define sz(x) (int)(x).size()
 #define fastio ios_base::sync_with_stdio(false); cin.tie(NULL);
 
 typedef vector<int> vi;
+typedef vector<pair<int,int>> vip;
 
 void solve()
 {
     int n; cin >> n;
-    
 
-    vector<pair<char,int>> vp;
+    vi v, revV;
+
+    map<int, int> m;
 
     fr(i,0,n)
     {
-    	int x; cin >> x;
-    	if (i % 2)
-    	{
-    		vp.push_back(make_pair(x,'r'));
-    	}
-    	else
-    	{
-    		vp.push_back(make_pair(x,'b'));
-    	}
+    	int x;
+    	cin >> x;
+
+    	v.pb(x);
+
+    	m[x] = i;
     }
 
-    sort(all(vp));
-
-    for (int i = 1; i < n; i++)
+    int temp = n;
+    fr(i,0,n)
     {
-    	if(vp[i].second == vp[i-1].second)
+    	revV.pb(n-i);
+    }
+
+    // reverse(all(revV));
+
+    int idx = -1;
+
+
+    fr(i,0,n)
+    {
+    	if(v[i] < revV[i])
     	{
-    	 	no;
-    	 	return;
+    		idx = i;
+    		break;
     	}
     }
 
-    yes;
+    if (idx != -1)
+    {
+    	int end = m[n - idx];
 
+    	reverse(v.begin()+idx, v.begin()+end+1);
+    }
+
+    for (auto x : v)
+    {
+    	cout << x << " ";
+    }
+
+    cout << endl;
 
 }
 

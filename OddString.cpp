@@ -17,37 +17,33 @@ typedef vector<int> vi;
 void solve()
 {
     int n; cin >> n;
-    
+    string s; cin >> s;
 
-    vector<pair<char,int>> vp;
+    sort(all(s));
 
-    fr(i,0,n)
+    if (n <= 1)
     {
-    	int x; cin >> x;
-    	if (i % 2)
-    	{
-    		vp.push_back(make_pair(x,'r'));
-    	}
-    	else
-    	{
-    		vp.push_back(make_pair(x,'b'));
-    	}
+    	yes;
     }
-
-    sort(all(vp));
-
-    for (int i = 1; i < n; i++)
+    else
     {
-    	if(vp[i].second == vp[i-1].second)
+    	fr(i,0,n-1)
     	{
-    	 	no;
-    	 	return;
+    		fr(j,i+1,n)
+    		{
+    			if (s[i]==s[j])
+    			{
+    				if(j % 2 == i % 2)
+    				{
+    					no;
+    					return;
+    				}
+    			}
+    		}
     	}
+
+    	yes;
     }
-
-    yes;
-
-
 }
 
 int32_t main() 

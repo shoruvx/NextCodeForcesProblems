@@ -1,0 +1,49 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Run C++ (current file)",
+      "type": "shell",
+      "command": "g++",
+      "args": [
+        "-std=c++17",
+        "-I${workspaceFolder}",
+        "-O2",
+        "-Wall",
+        "-o",
+        "${fileDirname}/${fileBasenameNoExtension}",
+        "${file}"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
+      "presentation": {
+        "reveal": "silent",
+        "panel": "shared"
+      },
+      "problemMatcher": ["$gcc"]
+    },
+    {
+      "label": "Build and run C++ (current file)",
+      "type": "shell",
+      "dependsOn": "Run C++ (current file)",
+      "dependsOrder": "sequence",
+      "command": "./${fileBasenameNoExtension}",
+      "options": {
+        "cwd": "${fileDirname}"
+      },
+      "args": [],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "focus": true
+      },
+      "problemMatcher": []
+    }
+  ]
+}

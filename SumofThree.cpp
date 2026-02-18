@@ -3,12 +3,13 @@
 using namespace std;
 
 #define int long long
-#define endl '\n'
+#define uint unsigned long long
 #define all(x) (x).begin(), (x).end()
 #define rall(x) (x).rbegin(), (x).rend()
 #define fr(i,a,b) for(int i = a; i < b; i++)
 #define rfr(i,a,b) for(int i = a - 1; i >= b; i--)
 #define in(v,n)  vi v(n); fr(i,0,n) cin>>v[i];
+#define out(v) do { for (auto x : v) cout << x << ' '; cout << '\n'; } while(0)
 #define yes cout<<"YES"<<'\n'
 #define no cout<<"NO"<<'\n'
 #define pb push_back
@@ -18,38 +19,28 @@ using namespace std;
 
 typedef vector<int> vi;
 typedef vector<pair<int,int>> vip;
-typedef map<int,int> mi;
+typedef unordered_map<int,int> mi;
 
-void solve() {
+void solve()
+{
+    int n; cin >> n;
 
-    int n;
-    cin >> n;
-    string s;
-    cin >> s;
-
-    s = '1' + s + '1';
-
-    int ans = 0;
-    for (int i = 1, l = 0; i <= n; ++i)
+    if (n < 7 || n == 9)
     {
-        if (s[i] == '0') 
-        {
-            if (s[i-1] == '1') 
-            {
-                l = i;
-            }
-            if (s[i+1] == '1') 
-            {
-                int c = (l == 1) + (i == n);
-                ans += (i - l + 1 + c) / 3;
-            }
-        } 
-        else 
-        {
-            ++ans;
-        }
+    	no;
     }
-    cout << ans << endl;
+    else
+    {
+    	yes;
+    	if ( n % 3 == 0)
+    	{
+    		cout << 1 << " " << 4 << " " << n - 5 << endl; 
+    	}
+    	else
+    	{
+    		cout << 1 << " " << 2 << " " << n-3 << endl;
+    	}
+    }
 }
 
 int32_t main() 

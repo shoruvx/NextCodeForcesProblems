@@ -25,23 +25,30 @@ typedef unordered_map<int,int> mi;
 
 void solve()
 {
-    int n; cin >> n;
-    in(v,n);
-    int sum = (n* (n+1)) / 2;
+	vi v;
+	int x;
+    while(cin >> x)
+    { 
+    	v.pb(x);
 
-    frr(n)
-    {
-    	sum -= v[i];
+    	sort(all(v));
+
+    	if (sz(v) & 1)
+    	{
+    		cout << v[sz(v)/2] << endl;
+    	}
+    	else
+    	{
+    		cout << (v[(sz(v)/2) - 1] + v[sz(v)/2]) / 2 << endl;
+    	}
     }
-
-    cout << sum << endl;
 }
 
 int32_t main() 
 {
     fastio;
 
-	solve();
+    solve();
 
     return 0;
 }

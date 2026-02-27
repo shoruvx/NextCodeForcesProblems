@@ -1,5 +1,5 @@
-#include "bits/stdc++.h"
-//#include <bits/stdc++.h>
+// #include "bits/stdc++.h"
+#include <bits/stdc++.h>
 using namespace std;
 
 #define int long long
@@ -25,23 +25,20 @@ typedef unordered_map<int,int> mi;
 
 void solve()
 {
-    int n; cin >> n;
-    in(v,n);
-    int sum = (n* (n+1)) / 2;
-
-    frr(n)
+	int x;
+	cin >> x;
+    while (x != 42)
     {
-    	sum -= v[i];
+    	cout << x << endl;
+    	cin >> x;
     }
-
-    cout << sum << endl;
 }
 
 int32_t main() 
 {
     fastio;
 
-	solve();
+    solve();
 
     return 0;
 }

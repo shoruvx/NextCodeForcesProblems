@@ -23,25 +23,46 @@ typedef vector<int> vi;
 typedef vector<pair<int,int>> vip;
 typedef unordered_map<int,int> mi;
 
+int countScore(string s)
+{
+	int score = 1;
+
+	fr(i,1,sz(s))
+	{
+		if(s[i] != s[i-1]) score++;
+	}
+
+	return score;
+}
+
 void solve()
 {
-    int n; cin >> n;
-    in(v,n);
-    int sum = (n* (n+1)) / 2;
+	int n; cin >> n;
+    string s; cin >> s;
 
-    frr(n)
+    int score = countScore(s);
+
+    fr(i,0,n)
     {
-    	sum -= v[i];
+    	string temp = s;
+    	fr(j,0,n)
+    	{
+    		temp[(j+1) % n] = s[j];
+    	}
+    	s = temp;
+
+    	score = max(score, countScore(s));
     }
 
-    cout << sum << endl;
+    cout << score << endl;
 }
 
 int32_t main() 
 {
     fastio;
 
-	solve();
+    int t; cin >> t;
+    while(t--) solve();
 
     return 0;
 }

@@ -23,25 +23,56 @@ typedef vector<int> vi;
 typedef vector<pair<int,int>> vip;
 typedef unordered_map<int,int> mi;
 
+
 void solve()
 {
-    int n; cin >> n;
+    int n, x; cin >> n >> x;
     in(v,n);
-    int sum = (n* (n+1)) / 2;
 
-    frr(n)
+    sort(all(v));
+
+    int start = 1;
+    int end = 2e9 + 7;
+    int ans = 1;
+
+    while (start <= end)
     {
-    	sum -= v[i];
+    	int mid = (start + end) / 2;
+
+    	int currWater = 0;
+
+    	frr(n)
+    	{
+    		if(v[i] < mid)
+    		{
+    			currWater += (mid - v[i]);
+    		}
+    		if (currWater > x) break;
+    	}
+
+    	if (currWater <= x)
+    	{
+    		ans = mid;
+    		start = mid + 1;
+
+    	}
+    	else
+    	{
+    		end = mid - 1;
+    	}
     }
 
-    cout << sum << endl;
+    cout << ans << endl;
+
+
 }
 
 int32_t main() 
 {
     fastio;
 
-	solve();
+    int t; cin >> t;
+    while(t--) solve();
 
     return 0;
 }

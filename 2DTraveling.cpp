@@ -25,23 +25,46 @@ typedef unordered_map<int,int> mi;
 
 void solve()
 {
-    int n; cin >> n;
-    in(v,n);
-    int sum = (n* (n+1)) / 2;
+    int n,k,a,b; cin >> n >> k >> a >> b;
+
+    vip vp;
 
     frr(n)
     {
-    	sum -= v[i];
+    	int x,y; cin >> x >> y;
+    	vp.pb(mp(x,y));
     }
 
-    cout << sum << endl;
+    int minDisA = LLONG_MAX;
+    int minDisB = LLONG_MAX;
+
+    frr(k)
+    {
+    	minDisA = min(minDisA, abs(vp[i].first - vp[a-1].first) + abs(vp[i].second - vp[a-1].second));
+    }
+
+    frr(k)
+    {
+    	minDisB = min(minDisB, abs(vp[i].first - vp[b-1].first) + abs(vp[i].second - vp[b-1].second));
+    }
+
+    if (k > 0)
+    {
+    	cout << min(minDisA+minDisB, abs(vp[a-1].first - vp[b-1].first) + abs(vp[a-1].second - vp[b-1].second)) << endl;
+    }
+    else
+    {
+    	cout << abs(vp[a-1].first - vp[b-1].first) + abs(vp[a-1].second - vp[b-1].second) << endl;
+    }
+
 }
 
 int32_t main() 
 {
     fastio;
 
-	solve();
+    int t; cin >> t;
+    while(t--) solve();
 
     return 0;
 }

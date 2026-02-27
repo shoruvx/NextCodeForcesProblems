@@ -27,14 +27,16 @@ void solve()
 {
     int n; cin >> n;
     in(v,n);
-    int sum = (n* (n+1)) / 2;
 
-    frr(n)
+    int moves = 0;
+
+    fr(i,1,n)
     {
-    	sum -= v[i];
+    	moves += max(0ll,v[i-1]-v[i]);
+    	v[i] += max(0ll,v[i-1]-v[i]);
     }
 
-    cout << sum << endl;
+    cout << moves << endl;
 }
 
 int32_t main() 

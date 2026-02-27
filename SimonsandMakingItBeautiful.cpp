@@ -27,21 +27,25 @@ void solve()
 {
     int n; cin >> n;
     in(v,n);
-    int sum = (n* (n+1)) / 2;
 
     frr(n)
     {
-    	sum -= v[i];
+    	if (v[i]==n)
+    	{
+    		swap(v[i],v[0]);
+    		break;
+    	}
     }
 
-    cout << sum << endl;
+    out(v);
 }
 
 int32_t main() 
 {
     fastio;
 
-	solve();
+    int t; cin >> t;
+    while(t--) solve();
 
     return 0;
 }

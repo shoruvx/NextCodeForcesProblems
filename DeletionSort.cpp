@@ -27,21 +27,33 @@ void solve()
 {
     int n; cin >> n;
     in(v,n);
-    int sum = (n* (n+1)) / 2;
 
-    frr(n)
+    int unSort = 0;
+
+    fr(i,1,n)
     {
-    	sum -= v[i];
+    	if (v[i] < v[i-1])
+    	{
+    		unSort = 1;
+    	}
     }
 
-    cout << sum << endl;
+    if(unSort)
+    {
+    	cout << 1 << endl;
+    }
+    else
+    {
+    	cout << n << endl;
+    }
 }
 
 int32_t main() 
 {
     fastio;
 
-	solve();
+    int t; cin >> t;
+    while(t--) solve();
 
     return 0;
 }

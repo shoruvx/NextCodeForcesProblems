@@ -12,8 +12,8 @@ using namespace std;
 #define rfr(i,a,b) for(int i = a - 1; i >= b; i--)
 #define in(v,n)  vi v(n); fr(i,0,n) cin>>v[i];
 #define out(v) do { for (auto x : v) cout << x << ' '; cout << '\n'; } while(0)
-#define yes cout<<"YES"<<'\n'
-#define no cout<<"NO"<<'\n'
+#define yes cout<<"Yes"<<'\n'
+#define no cout<<"No"<<'\n'
 #define pb push_back
 #define mp make_pair
 #define sz(x) (int)(x).size()
@@ -25,23 +25,53 @@ typedef unordered_map<int,int> mi;
 
 void solve()
 {
-    int n; cin >> n;
-    in(v,n);
-    int sum = (n* (n+1)) / 2;
+    int n, k; cin >> n >> k;
+    
+    vi pref[3];
 
-    frr(n)
+    frr(3)
     {
-    	sum -= v[i];
+    	int s = 0;
+    	pref[i].pb(0);
+
+    	fr(j,0,n)
+    	{
+    		int x; cin >> x;
+
+    		if ((s | x) != s)
+    		{
+    			s |= x;
+    			pref[i].pb(s);
+    		}
+    	}
     }
 
-    cout << sum << endl;
+
+    for (auto it : pref[0])
+    {
+    	for(auto it2 : pref[1])
+    	{
+    		for (auto it3 : pref[2])
+    		{
+    			if ( (it | it2 | it3) == k)
+    			{
+    				yes;
+    				return;
+    			}
+    		}
+    	}
+    }
+
+    no;
+
 }
 
 int32_t main() 
 {
     fastio;
 
-	solve();
+    int t; cin >> t;
+    while(t--) solve();
 
     return 0;
 }

@@ -1,3 +1,8 @@
+/* 
+What are you staring at?
+Comeback Loading.... 
+*/
+
 #include "bits/stdc++.h"
 //#include <bits/stdc++.h>
 using namespace std;
@@ -21,31 +26,67 @@ using namespace std;
 
 typedef vector<int> vi;
 typedef vector<pair<int,int>> vip;
-typedef unordered_map<string,int> mi;
+typedef map<int,int> mi;
 
-mi m;
+vi sieve(int n)
+{
+	vi prime(n+1,1);
+	prime[0] = prime[1] = 0;
+
+	mi m;
+
+	for(int i = 2; i * i <= n; i++)
+	{
+		if (prime[i])
+		{
+			for (int j = i * i; j <= n; j+=i)
+			{
+				prime[j] = 0;
+			}
+		}
+	}
+
+	vi ans;
+
+	frr(n+1)
+	{
+		if (prime[i]) ans.pb(i);
+	}
+
+	return ans;
+
+}
 
 void solve()
 {
-    string s; cin >> s;
+    int n, k; cin >> n >> k;
 
-    if (m.find(s) == m.end())
+    vi v = sieve(n);
+
+    mi m;
+
+    for (auto x : v)
     {
-    	cout << "OK\n";
-    }
-    else
-    {
-    	cout << s << m[s] << endl;
+    	m[x]++;
     }
 
-    m[s]++;
+    fr(i,1,v.size())
+    {
+    	if (m.find(v[i]+v[i-1]+1) != m.end())
+    	{
+    		k--;
+    	}
+    }
+
+    if (k > 0) no;
+    else yes;
 }
 
 int32_t main() 
 {
     fastio;
 
-    int t; cin >> t;
+    int t = 1;
     while(t--) solve();
 
     return 0;

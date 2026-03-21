@@ -20,25 +20,41 @@ using namespace std;
 #define fastio ios_base::sync_with_stdio(false); cin.tie(NULL);
 
 typedef vector<int> vi;
-typedef vector<pair<int,int>> vip;
-typedef unordered_map<string,int> mi;
-
-mi m;
+typedef vector<pair<int,char>> vip;
+typedef unordered_map<int,int> mi;
 
 void solve()
 {
-    string s; cin >> s;
+    int r,g,b; cin >> r >> g >> b;
+    vip vp;
+    string ans = "";
 
-    if (m.find(s) == m.end())
+    vp.pb(mp(r,'R'));
+    vp.pb(mp(g,'G'));
+    vp.pb(mp(b,'B'));
+
+    sort(rall(vp));
+
+    
+    while (vp[0].first && vp[1].first)
     {
-    	cout << "OK\n";
-    }
-    else
-    {
-    	cout << s << m[s] << endl;
+    	ans += vp[0].second;
+    	vp[0].first--;
+    	ans += vp[1].second;
+    	vp[1].first--;
+
     }
 
-    m[s]++;
+    while (vp[0].first && vp[2].first)
+    {
+    	ans += vp[0].second;
+    	vp[0].first--;
+    	ans += vp[2].second;
+    	vp[2].first--;
+
+    }
+
+    cout << ans << endl;
 }
 
 int32_t main() 

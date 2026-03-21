@@ -21,24 +21,34 @@ using namespace std;
 
 typedef vector<int> vi;
 typedef vector<pair<int,int>> vip;
-typedef unordered_map<string,int> mi;
-
-mi m;
+typedef unordered_map<int,int> mi;
 
 void solve()
 {
-    string s; cin >> s;
+    int n; cin >> n;
+    int count = 0;
 
-    if (m.find(s) == m.end())
+    frr(100)
     {
-    	cout << "OK\n";
-    }
-    else
-    {
-    	cout << s << m[s] << endl;
+    	if (n==1)
+    	{
+    		break;
+    	}
+
+    	if (n % 6 == 0)
+    	{
+    		n /= 6;
+    	}
+    	else
+    	{
+    		n *= 2;
+    	}
+
+    	count++;
     }
 
-    m[s]++;
+    if (n==1) cout << count << endl;
+    else cout << -1 << endl;
 }
 
 int32_t main() 

@@ -21,24 +21,51 @@ using namespace std;
 
 typedef vector<int> vi;
 typedef vector<pair<int,int>> vip;
-typedef unordered_map<string,int> mi;
+typedef unordered_map<int,int> mi;
 
-mi m;
+int countOnes(string s)
+{
+	int cnt = 0;
+
+	for (auto x : s)
+	{
+		if (x == '1')
+		{
+			cnt++;
+		}
+	}
+
+	return cnt;
+}
 
 void solve()
 {
-    string s; cin >> s;
+	int n; cin >> n;
+	string s; cin >> s;
 
-    if (m.find(s) == m.end())
-    {
-    	cout << "OK\n";
-    }
-    else
-    {
-    	cout << s << m[s] << endl;
-    }
 
-    m[s]++;
+	for (int i = 1; i < n - 1; i++)
+	{
+		if (s[i-1]=='1' && s[i+1] == '1')
+		{
+			s[i] = '1';
+		}
+	}
+
+	int maxVal = countOnes(s);
+
+	for (int i = 1; i < n - 1; i++)
+	{
+		if (s[i-1]=='1' && s[i+1] == '1')
+		{
+			s[i] = '0';
+		}
+	}
+
+	int minVal = countOnes(s);
+
+	cout << minVal << " " << maxVal << endl;
+	
 }
 
 int32_t main() 

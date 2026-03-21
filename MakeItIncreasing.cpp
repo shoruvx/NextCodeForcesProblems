@@ -13,7 +13,7 @@ using namespace std;
 #define in(v,n)  vi v(n); fr(i,0,n) cin>>v[i];
 #define out(v) do { for (auto x : v) cout << x << ' '; cout << '\n'; } while(0)
 #define yes cout<<"YES"<<'\n'
-#define no cout<<"NO"<<'\n'
+#define no cout<<-1<<'\n'
 #define pb push_back
 #define mp make_pair
 #define sz(x) (int)(x).size()
@@ -21,24 +21,32 @@ using namespace std;
 
 typedef vector<int> vi;
 typedef vector<pair<int,int>> vip;
-typedef unordered_map<string,int> mi;
-
-mi m;
+typedef unordered_map<int,int> mi;
 
 void solve()
 {
-    string s; cin >> s;
+    int n; cin >> n;
+    in(v,n);
 
-    if (m.find(s) == m.end())
+    int count = 0;
+
+    rfr(i,n,1)
     {
-    	cout << "OK\n";
-    }
-    else
-    {
-    	cout << s << m[s] << endl;
+
+    	while (v[i-1] >= v[i] && v[i-1] > 0)
+    	{
+    		v[i-1] /= 2;
+    		count++;
+    	}
+
+    	if (v[i-1] >= v[i])
+    	{
+    		no;
+    		return;
+    	}
     }
 
-    m[s]++;
+    cout << count << endl;
 }
 
 int32_t main() 

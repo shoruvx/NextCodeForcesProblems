@@ -21,24 +21,37 @@ using namespace std;
 
 typedef vector<int> vi;
 typedef vector<pair<int,int>> vip;
-typedef unordered_map<string,int> mi;
-
-mi m;
+typedef unordered_map<int,int> mi;
 
 void solve()
 {
-    string s; cin >> s;
+    int n; cin >> n;
 
-    if (m.find(s) == m.end())
+    vip vp;
+
+    frr(n)
     {
-    	cout << "OK\n";
-    }
-    else
-    {
-    	cout << s << m[s] << endl;
+    	int a, b;
+    	cin >> a >> b;
+
+    	vp.pb(mp(a,b));
     }
 
-    m[s]++;
+    int maxVal = vp[0].second;
+
+    frr(n)
+    {
+    	if (maxVal < vp[i].first)
+    	{
+    		maxVal = vp[i].first;
+    	}
+    	else if (maxVal > vp[i].second)
+    	{
+    		maxVal = vp[i].second;
+    	}
+    }
+
+    cout << maxVal << endl;
 }
 
 int32_t main() 

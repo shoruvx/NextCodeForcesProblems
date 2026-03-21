@@ -12,8 +12,8 @@ using namespace std;
 #define rfr(i,a,b) for(int i = a - 1; i >= b; i--)
 #define in(v,n)  vi v(n); fr(i,0,n) cin>>v[i];
 #define out(v) do { for (auto x : v) cout << x << ' '; cout << '\n'; } while(0)
-#define yes cout<<"YES"<<'\n'
-#define no cout<<"NO"<<'\n'
+#define yes cout<<1<<'\n'
+#define no cout<<0<<'\n'
 #define pb push_back
 #define mp make_pair
 #define sz(x) (int)(x).size()
@@ -21,24 +21,24 @@ using namespace std;
 
 typedef vector<int> vi;
 typedef vector<pair<int,int>> vip;
-typedef unordered_map<string,int> mi;
-
-mi m;
+typedef unordered_map<int,int> mi;
 
 void solve()
 {
-    string s; cin >> s;
+    int x,k; cin >> x >> k;
 
-    if (m.find(s) == m.end())
+    fr(i, 2, sqrt(x)+1)
     {
-    	cout << "OK\n";
-    }
-    else
-    {
-    	cout << s << m[s] << endl;
+    	while(x % i == 0)
+    	{
+    		k--;
+    		x /= i;
+    	}
     }
 
-    m[s]++;
+    if (x > 1) k--;
+
+    (k <= 0)? yes : no;
 }
 
 int32_t main() 

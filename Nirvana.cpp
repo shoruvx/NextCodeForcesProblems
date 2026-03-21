@@ -21,32 +21,46 @@ using namespace std;
 
 typedef vector<int> vi;
 typedef vector<pair<int,int>> vip;
-typedef unordered_map<string,int> mi;
+typedef unordered_map<int,int> mi;
 
-mi m;
+int countMult(int n)
+{
+	int mult = 1;
+
+	while (n)
+	{
+		int lastDig = n % 10;
+		mult *= lastDig;
+		n /= 10;
+	}
+
+	return mult;
+}
 
 void solve()
 {
-    string s; cin >> s;
+    int n; cin >> n;
 
-    if (m.find(s) == m.end())
+    int ans = 0;
+    int p = 1;
+
+    ++n;
+
+    while(n)
     {
-    	cout << "OK\n";
-    }
-    else
-    {
-    	cout << s << m[s] << endl;
+    	ans = max(ans, countMult(n*p - 1));
+    	n /= 10;
+    	p *= 10;
     }
 
-    m[s]++;
+    cout << ans << endl;
 }
 
 int32_t main() 
 {
     fastio;
 
-    int t; cin >> t;
-    while(t--) solve();
+	solve();
 
     return 0;
 }

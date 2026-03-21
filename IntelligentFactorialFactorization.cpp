@@ -21,24 +21,60 @@ using namespace std;
 
 typedef vector<int> vi;
 typedef vector<pair<int,int>> vip;
-typedef unordered_map<string,int> mi;
+typedef map<int,int> mi;
 
-mi m;
+
+mi factor(int x, mi& m)
+{
+	for (int i = 2; i * i <= x; i++)
+	{
+		if (x % i == 0)
+		{
+			while (x % i == 0)
+			{
+				m[i]++;
+
+				x /= i;
+			}
+		}
+	}
+
+	if (x > 1) m[x]++;
+
+	return m;
+}
+
+int cnt = 1;
+
 
 void solve()
 {
-    string s; cin >> s;
+    int n; cin >> n;
+    mi m;
 
-    if (m.find(s) == m.end())
+    frr(n)
     {
-    	cout << "OK\n";
-    }
-    else
-    {
-    	cout << s << m[s] << endl;
+    	factor(i+1, m);
     }
 
-    m[s]++;
+    cout << "Case " << cnt << ": " << n << " = ";
+
+    int size = sz(m);
+
+    for (auto x : m)
+    {
+    	cout << x.first << " (" << x.second << ") ";
+
+    	if (size >= 2)
+    	{
+    		cout << "* ";
+    	}
+    	size--;
+    }
+    cout << endl;
+    cnt++;
+
+    // cout << m.size() << endl;
 }
 
 int32_t main() 

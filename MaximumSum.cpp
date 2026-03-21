@@ -6,6 +6,8 @@ using namespace std;
 #define uint unsigned long long
 #define all(x) (x).begin(), (x).end()
 #define rall(x) (x).rbegin(), (x).rend()
+#define frr(n) for(int i = 0; i < n; i++)
+#define rfrr(n) for(int i = n-1; i >= 0; i--)
 #define fr(i,a,b) for(int i = a; i < b; i++)
 #define rfr(i,a,b) for(int i = a - 1; i >= b; i--)
 #define in(v,n)  vi v(n); fr(i,0,n) cin>>v[i];
@@ -23,39 +25,35 @@ typedef unordered_map<int,int> mi;
 
 void solve()
 {
-    int sum = 0, n, k; cin >> n >> k;
+    int n, k; cin >> n >> k;
+    in(v,n);
 
-    vi v(n);
-
-    fr(i,0,n)
-    {
-    	cin >> v[i];
-    	sum += v[i];
-    }
+    vi pref(n+1,0);
+    vi suff(n+1,0);
 
     sort(all(v));
-    int start = 0, end = n-1;
 
-    while(k--)
+    
+    frr(n)
     {
-    	if (start >= end)
-    	{
-    		sum -= v[end];
-    		end--;
-    	}
-    	else if (v[start] + v[start+1] < v[end])
-    	{
-    		sum -= (v[start] + v[start+1]);
-    		start += 2;
-    	}
-    	else
-    	{
-    		sum -= v[end];
-    		end--;
-    	}
+        pref[i+1] = pref[i] + v[i];
     }
 
-    cout << sum << endl;
+    int sum = pref[n];
+
+    frr(n)
+    {
+        suff[i+1] = suff[i] + v[n-1-i];
+    }
+
+    int ans = 0;
+    frr(k+1)
+    {
+        int removed = pref[2*i] + suff[k-i];
+        ans = max(ans, sum - removed);
+    }
+
+    cout << ans << endl;
 }
 
 int32_t main() 

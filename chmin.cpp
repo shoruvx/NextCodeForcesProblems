@@ -21,32 +21,33 @@ using namespace std;
 
 typedef vector<int> vi;
 typedef vector<pair<int,int>> vip;
-typedef unordered_map<string,int> mi;
-
-mi m;
+typedef unordered_map<int,int> mi;
 
 void solve()
 {
-    string s; cin >> s;
+    int n,x; cin >> n >> x;
 
-    if (m.find(s) == m.end())
-    {
-    	cout << "OK\n";
-    }
-    else
-    {
-    	cout << s << m[s] << endl;
-    }
+    in(v,n);
 
-    m[s]++;
+    frr(n)
+    {
+    	if (v[i] < x)
+    	{
+    		cout << 1 << endl;
+    		x = v[i];
+    	}
+    	else
+    	{
+    		cout << 0 << endl;
+    	}
+    }
 }
 
 int32_t main() 
 {
     fastio;
 
-    int t; cin >> t;
-    while(t--) solve();
+	solve();
 
     return 0;
 }

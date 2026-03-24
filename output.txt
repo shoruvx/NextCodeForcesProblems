@@ -1,5 +1,4 @@
-
-RG
-
-RGRG
-GBGBGBGRGR
+YES
+NO
+YES
+NO
